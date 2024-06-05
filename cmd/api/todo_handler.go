@@ -34,7 +34,9 @@ func (h *TodoHandler) HandleGetTodos(w http.ResponseWriter, r bunrouter.Request)
 	if err != nil {
 		return err
 	}
-	return bunrouter.JSON(w, todos)
+	return bunrouter.JSON(w, envelope{
+		"data": todos,
+	})
 }
 
 func (h *TodoHandler) HandlePostTodo(w http.ResponseWriter, r bunrouter.Request) error {
@@ -54,7 +56,9 @@ func (h *TodoHandler) HandlePostTodo(w http.ResponseWriter, r bunrouter.Request)
 	if err != nil {
 		return err
 	}
-	return bunrouter.JSON(w, todo)
+	return bunrouter.JSON(w, envelope{
+		"data": todo,
+	})
 }
 
 func (h *TodoHandler) HandlePostChildTodo(w http.ResponseWriter, r bunrouter.Request) error {
@@ -74,7 +78,9 @@ func (h *TodoHandler) HandlePostChildTodo(w http.ResponseWriter, r bunrouter.Req
 	if err != nil {
 		return err
 	}
-	return bunrouter.JSON(w, todo)
+	return bunrouter.JSON(w, envelope{
+		"data": todo,
+	})
 }
 
 func (h *TodoHandler) HandleDeleteTodo(w http.ResponseWriter, r bunrouter.Request) error {
@@ -116,5 +122,7 @@ func (h *TodoHandler) HandleUpdateTodo(w http.ResponseWriter, r bunrouter.Reques
 	if err != nil {
 		return err
 	}
-	return bunrouter.JSON(w, todo)
+	return bunrouter.JSON(w, envelope{
+		"data": todo,
+	})
 }

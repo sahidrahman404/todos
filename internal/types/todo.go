@@ -61,6 +61,7 @@ func NewChildTodoFromCreateChildTodoParams(params CreateChildTodoParams) (*Todo,
 	}
 
 	validator := todo.validate()
+	validator.CheckField(*todo.TodoParent > 0, "todoParent", "todoParent cannot be empty")
 	if validator.HasErrors() {
 		return nil, utils.BadInputRequest(validator.FieldErrors)
 	}

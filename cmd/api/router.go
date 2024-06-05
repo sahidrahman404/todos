@@ -7,6 +7,8 @@ import (
 	"github.com/uptrace/bunrouter"
 )
 
+type envelope map[string]interface{}
+
 func (app *application) routes() http.Handler {
 	router := bunrouter.New()
 
