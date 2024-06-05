@@ -115,7 +115,7 @@ func TransformTodos(
 func TodoFiltersFromRequest(r *http.Request) (*TodoFilters, error) {
 	var todoFilters TodoFilters
 	query := r.URL.Query()
-	switch query.Get("get_completed") {
+	switch query.Get("show_completed") {
 	case "":
 		todoFilters.GetCompleted = nil
 	case "true":
@@ -126,7 +126,7 @@ func TodoFiltersFromRequest(r *http.Request) (*TodoFilters, error) {
 		todoFilters.GetCompleted = &filter
 	default:
 		return nil, utils.BadInputRequest(map[string]string{
-			"get_completed": "type should be boolean",
+			"show_completed": "type should be boolean",
 		})
 	}
 	return &todoFilters, nil
